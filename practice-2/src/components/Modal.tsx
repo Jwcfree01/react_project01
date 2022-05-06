@@ -15,22 +15,6 @@ export const Modal = () => {
 
   const [err, setErr] = useState(initialValues);
 
-  // useEffect(() => {
-  //   // post data in db.json file
-  //   if (
-  //     err.carNameErr === '' &&
-  //     err.brandNameErr === '' &&
-  //     err.colorErr === '' &&
-  //     err.quantityErr === ''
-  //   ) {
-  //     PostData({ carName, color, brandName, quantity });
-  //     setCarName('');
-  //     setColor('');
-  //     setBrandName('');
-  //     setQuantity(0);
-  //   }
-  // }, [err]);
-
   const validation = (car: ICar) => {
     const err = {
       carNameErr: '',
@@ -108,7 +92,9 @@ validation(car);
           <div className="modal-body">
             <div className="mb-3">
               {carInfo.map((item) => (
-                <LabelAndInput handleMessageErr={err.carNameErr} {...item} key={item.id} handleChange={handleChange} />
+                <LabelAndInput 
+                handleMessageErr={err} {...item} key={item.id}
+                handleChange={handleChange} />
               ))}
             </div>
           </div>

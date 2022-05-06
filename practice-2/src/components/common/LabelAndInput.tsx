@@ -1,17 +1,16 @@
+import { useState } from 'react';
 interface CarInfo {
   title: string;
   handleChange: (e: { target: { value: string } }, value: string) => void;
   name: string;
-  handleMessageErr: any;
+  handleMessageErr: any; 
+  nameErr?:string;
 }
 
-export const LabelAndInput = (props: CarInfo) => {
-  console.log(props.handleMessageErr);
-
+export const LabelAndInput = (props:CarInfo) => {
   return (
     <>
       <label htmlFor="carName">{props.title}</label>
-      {/* <span className="error">{props.handleMessageErr}</span> */}
       <input
         type="text"
         className="form-control modal-input"
@@ -20,7 +19,8 @@ export const LabelAndInput = (props: CarInfo) => {
         name={props.name}
         // value={props.name}
         onChange={(e) => props.handleChange(e, props.name)}
-      />
+        />
+        <span className="error">{props.nameErr ? props.handleMessageErr[props.nameErr]:""}</span>
     </>
   );
 };
